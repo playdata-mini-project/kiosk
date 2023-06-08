@@ -1,5 +1,7 @@
 package controller;
 
+import service.UserService;
+
 import java.util.Scanner;
 
 public class UserController {
