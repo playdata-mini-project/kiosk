@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import config.JdbcConnection;
 
 import java.sql.Connection;
@@ -8,6 +9,6 @@ public class Main {
 
     }
 
-
-
 }
+
+
