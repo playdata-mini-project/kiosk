@@ -8,7 +8,7 @@ public class OrderService {
 
     private static OrderService service;
 
-    private final static OrderRepository orderRepository = new OrderRepository();
+    private final OrderRepository orderRepository = new OrderRepository();
 
     // 싱글톤
     public static OrderService getInstance() {

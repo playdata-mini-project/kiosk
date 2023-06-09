@@ -18,6 +18,18 @@ public class Product {
         this.quantity = quantity;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", makeTime=" + makeTime +
+                ", categoryId=" + categoryId +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
+    }
+
     public void plusQuantity(int amount){
         this.quantity += amount;
     }

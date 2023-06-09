@@ -9,7 +9,7 @@ import java.util.List;
 public class ProductService {
 
     private static ProductService productService;
-    private final static ProductRepository productRepository = new ProductRepository();
+    private final ProductRepository productRepository = new ProductRepository();
     public static ProductService getInstance(){
         if(productService == null){
             productService = new ProductService();

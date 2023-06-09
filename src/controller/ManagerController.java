@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ManagerController {
 
-    private static final ManagerService managerService = ManagerService.getInstance();
+    private final ManagerService managerService = ManagerService.getInstance();
     public void selectMode(){
 
         Scanner sc = new Scanner(System.in);

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CategoryService {
     private static CategoryService categoryService;
-    private final static CategoryRepository categoryRepository = new CategoryRepository();
+    private final CategoryRepository categoryRepository = new CategoryRepository();
     private CategoryService(){};
     public static CategoryService getInstance(){
         if(categoryService == null){
