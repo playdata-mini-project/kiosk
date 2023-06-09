@@ -4,6 +4,7 @@ import domain.dto.LoginDto;
 import domain.dto.SignupDto;
 import domain.entity.User;
 import service.UserService;
+import utility.LoginUser;
 
 import java.util.Scanner;
 
@@ -16,8 +17,6 @@ public class UserController {
         Scanner sc = new Scanner(System.in);
 
         while(true){
-
-            System.out.println();
             System.out.println("1. 로그인 2. 회원가입");
             String mode = sc.nextLine();
             if(mode.equals("1")){
