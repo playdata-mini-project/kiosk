@@ -1,8 +1,8 @@
 package repository;
 
 import config.JdbcConnection;
-import dto.OrderHistoryDto;
-import dto.ProductDto;
+import domain.dto.OrderHistoryDto;
+import domain.dto.ProductDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

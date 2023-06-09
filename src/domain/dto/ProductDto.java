@@ -1,4 +1,4 @@
-package dto;
+package domain.dto;
 
 public class ProductDto {
     private int id;

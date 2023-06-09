@@ -1,10 +1,7 @@
 package controller;
 
-import dto.OrderHistoryDto;
-import dto.ProductDto;
 import service.ManagerService;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManagerController {

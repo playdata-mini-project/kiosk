@@ -1,7 +1,7 @@
 package service;
 
-import dto.OrderHistoryDto;
-import dto.ProductDto;
+import domain.dto.OrderHistoryDto;
+import domain.dto.ProductDto;
 import repository.ManagerRepository;
 import java.util.List;
 
