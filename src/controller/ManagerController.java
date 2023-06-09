@@ -12,13 +12,16 @@ public class ManagerController {
         Scanner sc = new Scanner(System.in);
 
         while(true){
-            System.out.println("1. 재고관리 2. 주문내역확인");
+            System.out.println("1. 재고관리 2. 주문내역확인 3. 수량추가");
             String mode = sc.nextLine();
             if(mode.equals("1")){
                 stockCheck(sc);
             }
             if(mode.equals("2")){
                 orderCheck(sc);
+            }
+            if(mode.equals("3")){
+                plusQuantity(sc);
             }
         }
     }
@@ -32,4 +35,12 @@ public class ManagerController {
         System.out.println("주문 내역을 확인합니다.");
         managerService.orderCheck();
     }
+    public void plusQuantity(Scanner sc) {
+        System.out.println("상품 아이디를 고르세요");
+        int productId = sc.nextInt();
+        System.out.println("수량을 입력하세요");
+        int quantity = sc.nextInt();
+        managerService.plusQuantity(productId, quantity);
+    }
+
 }
