@@ -1,7 +1,10 @@
 package controller;
 
+import dto.OrderHistoryDto;
+import dto.ProductDto;
 import service.ManagerService;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManagerController {
@@ -24,12 +27,12 @@ public class ManagerController {
     }
 
     private void stockCheck(Scanner sc) {
-
+        System.out.println("재고 목록을 확인합니다.");
         managerService.stockCheck();
     }
 
     private void orderCheck(Scanner sc) {
-
+        System.out.println("주문 내역을 확인합니다.");
         managerService.orderCheck();
     }
 }
