@@ -3,6 +3,7 @@ package repository;
 import config.JdbcConnection;
 import domain.dto.OrderHistoryDto;
 import domain.dto.ProductDto;
+import sql.manager_sql.ManagerSql;
 import sql.manager_sql.Manager_sql;
 
 import java.sql.Connection;
@@ -17,7 +18,7 @@ public class ManagerRepository {
         Connection conn = new JdbcConnection().getJdbc();
         List<ProductDto> productList = new ArrayList<>();
         try {
-            PreparedStatement psmt = conn.prepareStatement(Manager_sql.productSql);
+            PreparedStatement psmt = conn.prepareStatement(ManagerSql.productSql);
             ResultSet resultSet = psmt.executeQuery();
             while (resultSet.next()) {
                 ProductDto productDto = new ProductDto();
@@ -40,7 +41,7 @@ public class ManagerRepository {
         Connection conn = new JdbcConnection().getJdbc();
         List<OrderHistoryDto> orderList = new ArrayList<>();
         try {
-            PreparedStatement psmt1 = conn.prepareStatement(Manager_sql.order_historySql);
+            PreparedStatement psmt1 = conn.prepareStatement(ManagerSql.order_historySql);
             ResultSet resultSet = psmt1.executeQuery();
             while (resultSet.next()) {
                 OrderHistoryDto orderHistoryDto = new OrderHistoryDto();
@@ -62,7 +63,7 @@ public class ManagerRepository {
         Connection conn = new JdbcConnection().getJdbc();
         PreparedStatement psmt2 = null;
         try {
-            psmt2 = conn.prepareStatement(Manager_sql.quantitySql);
+            psmt2 = conn.prepareStatement(ManagerSql.quantitySql);
             psmt2.setInt(1, quantity);
             psmt2.setInt(2, productId);
             psmt2.executeUpdate();
