@@ -4,7 +4,6 @@ import config.JdbcConnection;
 import domain.dto.OrderHistoryDto;
 import domain.dto.ProductDto;
 import sql.manager_sql.ManagerSql;
-import sql.manager_sql.Manager_sql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
