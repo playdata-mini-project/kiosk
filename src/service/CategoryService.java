@@ -1,6 +1,9 @@
 package service;
 
+import domain.entity.Category;
 import repository.CategoryRepository;
+
+import java.util.List;
 
 
 public class CategoryService {
@@ -15,6 +18,9 @@ public class CategoryService {
     }
 
     public void printCategoryList(){
-        categoryRepository.getCategoryList();
+        List<Category> categoryList = categoryRepository.getCategoryList();
+        for (Category category : categoryList) {
+            System.out.println(category);
+        }
     }
 }

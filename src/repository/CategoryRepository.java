@@ -1,6 +1,7 @@
 package repository;
 
 import config.JdbcConnection;
+import domain.entity.Category;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,12 +38,4 @@ public class CategoryRepository {
 
 }
 
-class Category{
-    int id;
-    String name;
 
-    public Category(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-}
