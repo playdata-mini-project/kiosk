@@ -50,12 +50,12 @@ public class ProductRepository {
 
         try {
             PreparedStatement psmt = conn.prepareStatement(sql);
-            psmt.setString(1, String.valueOf(id));
+            psmt.setInt(1, id);
             ResultSet resultSet = psmt.executeQuery();
             while (resultSet.next()) {
                 int productId = resultSet.getInt("id");
                 String name = resultSet.getString("name");
-                int makeTime = resultSet.getInt("");
+                int makeTime = resultSet.getInt("make_time");
                 int categoryId = resultSet.getInt("category_id");
                 int price  = resultSet.getInt("price");
                 int quantity = resultSet.getInt("quantity");

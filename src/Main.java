@@ -1,11 +1,8 @@
-
-import config.JdbcConnection;
-
-import java.sql.Connection;
+import controller.UserController;
 
 public class Main {
     public static void main(String[] args) {
-        Connection conn = new JdbcConnection().getJdbc();
+        new UserController().selectMode();
     }
 
 }

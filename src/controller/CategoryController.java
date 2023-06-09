@@ -2,6 +2,7 @@ package controller;
 
 import domain.entity.Product;
 import service.CategoryService;
+import service.OrderService;
 import service.ProductService;
 import utility.LoginUser;
 
@@ -9,8 +10,10 @@ import java.util.Scanner;
 
 public class CategoryController {
 
-    private static final CategoryService categoryService = CategoryService.getInstance();
-    private static final ProductService productService = ProductService.getInstance();
+    private final CategoryService categoryService = CategoryService.getInstance();
+    private final ProductService productService = ProductService.getInstance();
+    private final OrderService orderService = OrderService.getInstance();
+
     public void selectMode(){
 
         System.out.println("카테고리 번호를 입력해주세요");
@@ -20,14 +23,16 @@ public class CategoryController {
 
         while(true){
 
-            int categoryId = Integer.parseInt(sc.nextLine());
+            int categoryId = sc.nextInt();
+            System.out.println(categoryId);
             productService.printProductsByCategoryId(categoryId);
             System.out.println("상품 번호를 입력해주세요");
 
-            int productId = Integer.parseInt(sc.nextLine());
+            int productId = sc.nextInt();
             System.out.println("수량을 입력해주세요");
-            int amount = Integer.parseInt(sc.nextLine());
+            int amount = sc.nextInt();
 
+            orderService.order(LoginUser.getId(), productId, amount);
         }
     }
 
