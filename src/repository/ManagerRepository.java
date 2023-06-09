@@ -37,28 +37,42 @@ public class ManagerRepository {
         return productList;
     }
 
-        public List<OrderHistoryDto> orderCheck() {
-            Connection conn = new JdbcConnection().getJdbc();
-            String sql = "select * from order_history";
-            List<OrderHistoryDto> orderList = new ArrayList<>();
-            try {
-                PreparedStatement psmt1 = conn.prepareStatement(sql);
-                ResultSet resultSet = psmt1.executeQuery();
-                while (resultSet.next()) {
-                    OrderHistoryDto orderHistoryDto = new OrderHistoryDto();
-                    orderHistoryDto.setId(resultSet.getInt("id"));
-                    orderHistoryDto.setUserId(resultSet.getInt("user_id"));
-                    orderHistoryDto.setProductId(resultSet.getInt("product_id"));
-                    orderHistoryDto.setAmount(resultSet.getInt("amount"));
-                    orderHistoryDto.setOrderedAt(resultSet.getString("ordered_at"));
-                    orderList.add(orderHistoryDto);
-                }
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+    public List<OrderHistoryDto> orderCheck() {
+        Connection conn = new JdbcConnection().getJdbc();
+        String sql = "select * from order_history";
+        List<OrderHistoryDto> orderList = new ArrayList<>();
+        try {
+            PreparedStatement psmt1 = conn.prepareStatement(sql);
+            ResultSet resultSet = psmt1.executeQuery();
+            while (resultSet.next()) {
+                OrderHistoryDto orderHistoryDto = new OrderHistoryDto();
+                orderHistoryDto.setId(resultSet.getInt("id"));
+                orderHistoryDto.setUserId(resultSet.getInt("user_id"));
+                orderHistoryDto.setProductId(resultSet.getInt("product_id"));
+                orderHistoryDto.setAmount(resultSet.getInt("amount"));
+                orderHistoryDto.setOrderedAt(resultSet.getString("ordered_at"));
+                orderList.add(orderHistoryDto);
             }
-            return orderList;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return orderList;
+    }
+
+    public void plusQuantity(int productId, int quantity) {
+        Connection conn = new JdbcConnection().getJdbc();
+        String sql = "update product set quantity = ? where id=?";
+        PreparedStatement psmt2 = null;
+        try {
+            psmt2 = conn.prepareStatement(sql);
+            psmt2.setInt(1, quantity);
+            psmt2.setInt(2, productId);
+            psmt2.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
+}
 
 
