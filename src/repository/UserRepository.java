@@ -4,6 +4,8 @@ import config.JdbcConnection;
 import domain.dto.LoginDto;
 import domain.dto.SignupDto;
 import domain.entity.User;
+import sql.user_sql.UserSql;
+import utility.LoginUser;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,16 +13,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserRepository {
-
-    public static User user;
-
+    Connection conn = new JdbcConnection().getJdbc();
     public boolean login(LoginDto dto) {
-        Connection conn = new JdbcConnection().getJdbc();
-        String sql = "select * from user " +
-                "where name = ? and password = ?";
         String name = null;
         try {
-            PreparedStatement psmt = conn.prepareStatement(sql);
+            PreparedStatement psmt = conn.prepareStatement(UserSql.loginSql);
             psmt.setString(1, dto.getName());
             psmt.setString(2, dto.getPassword());
             ResultSet resultSet = psmt.executeQuery();
@@ -28,8 +25,8 @@ public class UserRepository {
                 int id = resultSet.getInt("id");
                 name = resultSet.getString("name");
                 String role = resultSet.getString("role");
-                user = new User(name,role);
-                System.out.println(user);
+                LoginUser.doLogin(id,name,role);
+                System.out.println(LoginUser.printLoginUser());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -37,11 +34,8 @@ public class UserRepository {
         return name != null;
     }
     public void insertUser(SignupDto dto){
-        Connection conn = new JdbcConnection().getJdbc();
-        String sql = "insert into user(name,password,role)\n" +
-                "values (?,?,?)";
         try {
-            PreparedStatement psmt = conn.prepareStatement(sql);
+            PreparedStatement psmt = conn.prepareStatement(UserSql.insertUserSql);
             psmt.setString(1, dto.getName());
             psmt.setString(2, dto.getPassword());
             psmt.setString(3, dto.getRole());
