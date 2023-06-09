@@ -7,5 +7,5 @@ public class ProductDto {
     int makeTime;
     int categoryId;
     int price;
-    int qunatity;
+    int quantity;
 }
