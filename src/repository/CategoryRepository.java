@@ -2,6 +2,7 @@ package repository;
 
 import config.JdbcConnection;
 import domain.entity.Category;
+import sql.category_sql.CategorySql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,11 +18,10 @@ public class CategoryRepository {
 
         List<Category> categoryList = new ArrayList<>();
 
-        String sql = "SELECT * FROM CATEGORY";
-
         PreparedStatement psmt = null;
+
         try {
-            psmt = conn.prepareStatement(sql);
+            psmt = conn.prepareStatement(CategorySql.findAll);
             ResultSet rs = psmt.executeQuery();
 
             while(rs.next()){
