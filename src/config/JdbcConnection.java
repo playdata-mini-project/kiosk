@@ -6,14 +6,10 @@ import java.sql.SQLException;
 
 public class JdbcConnection {
 
-    private final String url = "jdbc:mysql://192.168.0.203:3306/kiosk"+
-            "?serverTimezone=Asia/Seoul&characterEncoding=UTF-8";
-    private final String user = "kiosk";
-    private final String password = "admin";
     public Connection getJdbc(){
         Connection conn;
         try {
-            conn = DriverManager.getConnection(url,user,password);
+            conn = DriverManager.getConnection(DbInfo.URL,DbInfo.USER,DbInfo.PASSWORD);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
