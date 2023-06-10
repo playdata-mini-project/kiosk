@@ -4,6 +4,7 @@ out/
 !**/src/test/**/out/
 .idea
 src/config/DbInfo.java
+.README.md
 
 ### Eclipse ###
 .apt_generated
