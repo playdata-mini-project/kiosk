@@ -3,6 +3,7 @@ package repository;
 import config.JdbcConnection;
 import domain.entity.Product;
 import domain.entity.User;
+import sql.product_sql.ProductSql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,17 +18,15 @@ public class ProductRepository {
         Connection conn = new JdbcConnection().getJdbc();
 
         Product product = null;
-        String sql = "select * from product " +
-                "where id = ?";
 
         try {
-            PreparedStatement psmt = conn.prepareStatement(sql);
-            psmt.setString(1, String.valueOf(id));
+            PreparedStatement psmt = conn.prepareStatement(ProductSql.findById);
+            psmt.setInt(1, id);
             ResultSet resultSet = psmt.executeQuery();
             while (resultSet.next()) {
                 int productId = resultSet.getInt("id");
                 String name = resultSet.getString("name");
-                int makeTime = resultSet.getInt("");
+                int makeTime = resultSet.getInt("make_time");
                 int categoryId = resultSet.getInt("category_id");
                 int price  = resultSet.getInt("price");
                 int quantity = resultSet.getInt("quantity");
@@ -45,11 +44,9 @@ public class ProductRepository {
         Connection conn = new JdbcConnection().getJdbc();
 
         List<Product> products = new ArrayList<>();
-        String sql = "select * from product " +
-                "where category_id = ?";
 
         try {
-            PreparedStatement psmt = conn.prepareStatement(sql);
+            PreparedStatement psmt = conn.prepareStatement(ProductSql.findByCategoryId);
             psmt.setInt(1, id);
             ResultSet resultSet = psmt.executeQuery();
             while (resultSet.next()) {
