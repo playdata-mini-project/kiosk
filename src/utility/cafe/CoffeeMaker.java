@@ -28,5 +28,6 @@ public class CoffeeMaker extends Thread{
         }
         order.changeIsComplete();
         System.out.println(orderNumber + "번 음료 제조 완료");
+        //cafeQueue.poll();
     }
 }
