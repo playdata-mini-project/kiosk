@@ -18,6 +18,30 @@ public class Product {
         this.quantity = quantity;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMakeTime() {
+        return makeTime;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
