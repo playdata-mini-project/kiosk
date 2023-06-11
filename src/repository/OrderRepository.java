@@ -61,7 +61,7 @@ public class OrderRepository {
     }
 
     public void orderDetailSave(int orderHistoryId, int productId, int quantity) {
-        String sql = "insert into customer_order (order_history_id,product_id,amount)" +
+        String sql = "insert into order_history_detail (order_history_id,product_id,amount)" +
                      "values (?,?,?)";
         try {
             PreparedStatement psmt = conn.prepareStatement(sql);

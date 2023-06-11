@@ -40,7 +40,7 @@ public class ManagerRepository {
         Connection conn = new JdbcConnection().getJdbc();
         List<OrderHistoryDto> orderList = new ArrayList<>();
         try {
-            PreparedStatement psmt1 = conn.prepareStatement(ManagerSql.order_historySql);
+            PreparedStatement psmt1 = conn.prepareStatement(ManagerSql.orderHistorySql);
             ResultSet resultSet = psmt1.executeQuery();
             while (resultSet.next()) {
                 OrderHistoryDto orderHistoryDto = new OrderHistoryDto();
