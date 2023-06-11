@@ -86,23 +86,23 @@ public class InitDb {
             "INSERT INTO CATEGORY(NAME) " +
                     "VALUES ('스무디')";
     private final String PRODUCT1 =
-            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE, QUANTITY) " +
-                    "VALUES ('아메리카노', 10, 1, 2000, 100)";
+            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE) " +
+                    "VALUES ('아메리카노', 10, 1, 2000)";
     private final String PRODUCT2 =
-            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE, QUANTITY) " +
-                    "VALUES ('라떼', 20, 1, 2500, 20)";
+            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE) " +
+                    "VALUES ('라떼', 20, 1, 2500)";
     private final String PRODUCT3 =
-            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE, QUANTITY) " +
-                    "VALUES ('히비스커스', 15, 2, 3000, 30)";
+            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE) " +
+                    "VALUES ('히비스커스', 15, 2, 3000)";
     private final String PRODUCT4 =
-            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE, QUANTITY) " +
-                    "VALUES ('캐모마일', 20, 2, 3500, 40)";
+            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE) " +
+                    "VALUES ('캐모마일', 20, 2, 3500)";
     private final String PRODUCT5 =
-            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE, QUANTITY) " +
-                    "VALUES ('딸기딜라이트요거트블렌디드', 30, 3, 4000, 60)";
+            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE) " +
+                    "VALUES ('딸기딜라이트요거트블렌디드', 30, 3, 4000)";
     private final String PRODUCT6 =
-            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE, QUANTITY) " +
-                    "VALUES ('블루베리스무디', 35, 3, 5000, 70)";
+            "INSERT INTO PRODUCT(NAME, MAKE_TIME, CATEGORY_ID, PRICE) " +
+                    "VALUES ('블루베리스무디', 35, 3, 5000)";
 
     private final String CREATE_CATEGORY_TABLE =
             "CREATE TABLE CATEGORY" +
@@ -115,7 +115,6 @@ public class InitDb {
                     "MAKE_TIME INT," +
                     "CATEGORY_ID INT," +
                     "PRICE INT," +
-                    "QUANTITY INT," +
                     "FOREIGN KEY (CATEGORY_ID) REFERENCES CATEGORY(ID))";
     private final String CREATE_USER_TABLE =
             "CREATE TABLE USER" +
