@@ -27,9 +27,8 @@ public class ManagerService {
     public List<OrderHistoryDto> orderCheck() {
         List<OrderHistoryDto> orderList= managerRepository.orderCheck();
         for (OrderHistoryDto orderHistotyDto : orderList){
-            System.out.println();
-            System.out.println(orderHistotyDto.getId() + ". " + orderHistotyDto.getUserId()
-                    + " | "+ orderHistotyDto.getAmount()+ " | " + orderHistotyDto.getOrderedAt());
+            System.out.println("주문번호 : " + orderHistotyDto.getId() + " 유저번호 : " + orderHistotyDto.getUserId()
+                    + " 주문상품 : " +  orderHistotyDto.getName()+ " 주문수량 : "+ orderHistotyDto.getAmount()+ " 주문일시 : " + orderHistotyDto.getOrderedAt());
         }
         return orderList;
     }

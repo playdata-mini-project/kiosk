@@ -20,8 +20,8 @@ public class OrderService {
     public void order(int userId, int productId, int quantity)  {
         // 재고수량 확인
         int stock = orderRepository.getStock(productId);
-        System.out.println(stock);
-        System.out.println(quantity);
+        System.out.println("상품번호 : " + productId + " 주문수량 :" + quantity);
+        System.out.println("음료가 준비되었습니다");
 
         // 주문
         if(quantity > stock) {
@@ -30,8 +30,6 @@ public class OrderService {
             orderRepository.order(productId,quantity);
             int orderHistoryId = orderRepository.orderSave(userId);
             orderRepository.orderDetailSave(orderHistoryId,productId,quantity);
-
-            System.out.println("실행됨");
         }
     }
 }

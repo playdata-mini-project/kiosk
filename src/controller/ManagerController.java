@@ -13,14 +13,14 @@ public class ManagerController {
 
         while(true){
             System.out.println("1. 재고관리 2. 주문내역확인 3. 수량추가");
-            String mode = sc.nextLine();
-            if(mode.equals("1")){
+            int mode = sc.nextInt();
+            if(mode==1){
                 stockCheck(sc);
             }
-            if(mode.equals("2")){
+            if(mode==2){
                 orderCheck(sc);
             }
-            if(mode.equals("3")){
+            if(mode==3){
                 plusQuantity(sc);
             }
         }

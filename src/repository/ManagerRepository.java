@@ -46,7 +46,7 @@ public class ManagerRepository {
                 OrderHistoryDto orderHistoryDto = new OrderHistoryDto();
                 orderHistoryDto.setId(resultSet.getInt("id"));
                 orderHistoryDto.setUserId(resultSet.getInt("user_id"));
-                orderHistoryDto.setProductId(resultSet.getInt("product_id"));
+                orderHistoryDto.setName(resultSet.getString("name"));
                 orderHistoryDto.setAmount(resultSet.getInt("amount"));
                 orderHistoryDto.setOrderedAt(resultSet.getString("ordered_at"));
                 orderList.add(orderHistoryDto);

@@ -67,9 +67,9 @@ public class InitDb {
         queryList.add(PRODUCT5);
         queryList.add(PRODUCT6);
     }
-    private final String DROP_DATABASE = "DROP DATABASE PLAYDATA";
-    private final String CREATE_DATABASE = "CREATE DATABASE PLAYDATA";
-    private final String USE_DATABASE = "USE PLAYDATA";
+    private final String DROP_DATABASE = "DROP DATABASE KIOSK";
+    private final String CREATE_DATABASE = "CREATE DATABASE KIOSK";
+    private final String USE_DATABASE = "USE KIOSK";
     private final String USER1 =
             "INSERT INTO USER(NAME, PASSWORD, ROLE) " +
                     "VALUES ('red', '1111', 'admin')";
