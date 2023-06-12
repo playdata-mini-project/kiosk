@@ -1,6 +1,7 @@
 package repository;
 
 import config.JdbcConnection;
+import sql.order_sql.OrderSql;
 import sql.user_sql.UserSql;
 import utility.LoginUser;
 
@@ -12,9 +13,8 @@ public class OrderRepository {
 
     public int getStock(int productId) {
         Integer quantity = null;
-        String sql= "select (quantity) from product where id = ?";
         try {
-            PreparedStatement psmt = conn.prepareStatement(sql);
+            PreparedStatement psmt = conn.prepareStatement(OrderSql.getStockSql);
             psmt.setInt(1, productId);
             ResultSet resultSet = psmt.executeQuery();
             while (resultSet.next()) {
@@ -28,10 +28,9 @@ public class OrderRepository {
     }
 
     public void order(int productId, int quantity) {
-        String sql =" update product set quantity = quantity - ?" +
-                    " where id = ? ";
+
         try {
-            PreparedStatement psmt = conn.prepareStatement(sql);
+            PreparedStatement psmt = conn.prepareStatement(OrderSql.orderSql);
             psmt.setInt(1, quantity);
             psmt.setInt(2, productId);
             psmt.executeUpdate();
@@ -42,10 +41,9 @@ public class OrderRepository {
 
     public int orderSave(int userId) {
         int orderHistoryId = 0;
-        String sql = "insert into order_history(user_id)" +
-                     "values(?)";
+
         try {
-            PreparedStatement psmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement psmt = conn.prepareStatement(OrderSql.orderSaveSql, Statement.RETURN_GENERATED_KEYS);
             psmt.setInt(1, userId);
             psmt.executeUpdate();
             ResultSet generatedKeys = psmt.getGeneratedKeys();
@@ -61,10 +59,8 @@ public class OrderRepository {
     }
 
     public void orderDetailSave(int orderHistoryId, int productId, int quantity) {
-        String sql = "insert into order_history_detail (order_history_id,product_id,amount)" +
-                     "values (?,?,?)";
         try {
-            PreparedStatement psmt = conn.prepareStatement(sql);
+            PreparedStatement psmt = conn.prepareStatement(OrderSql.orderDetailSaveSql);
             psmt.setInt(1, orderHistoryId);
             psmt.setInt(2, productId);
             psmt.setInt(3, quantity);
